@@ -27,20 +27,16 @@ public class ContainerWithRealBd
         _collection.AddSingleton<IDbConnectionFactory>(x => new DbConnectionFactory(DbHelper.ConnectionString));
 
         _collection.AddSingleton<ISynonymMaker, SynonymMaker>();
+
         _collection.AddSingleton<IBookRepository, BookRepository>();
-        _collection.AddSingleton<IValidator<Book>, BookValidator>();
         _collection.AddSingleton<IBookService, BookService>();
 
         _collection.AddSingleton<IImageService, ImageService>();
         _collection.AddSingleton<IImageTransformer, ImageTransformer>();
         _collection.AddSingleton<IImageRepository, ImageRepository>();
-        _collection.AddSingleton<IValidator<FormImageFile>, ImageValidator>();
 
         _collection.AddSingleton<IEventRepository, EventRepository>();
         _collection.AddSingleton<IEventService, EventService>();
-
-        _collection.AddSingleton<IValidator<Rubric>, RubricValidator>();
-        _collection.AddSingleton<IRubricsService, RubricsService>();
     }
 
     public IServiceProvider Build()

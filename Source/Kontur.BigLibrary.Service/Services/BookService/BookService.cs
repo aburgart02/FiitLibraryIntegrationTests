@@ -131,9 +131,9 @@ namespace Kontur.BigLibrary.Service.Services.BookService
 
         private async Task ValidateBookAsync(Book book, CancellationToken cancellation)
         {
-            if (book.Name == null || book.Author == null || book.Author == null || book.Description == null)
+            if (book.Name == null || book.Author == null || book.Description == null)
             {
-                throw new ValidationException("Не заполнены обязательные поля");   
+                throw new ValidationException("Не заполнены обязательные поля");
             }
 
             var rubric = await bookRepository.GetRubricAsync(book.RubricId, cancellation);

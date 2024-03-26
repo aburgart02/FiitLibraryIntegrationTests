@@ -56,6 +56,7 @@ public class BookServiceTest
             ImageId = image.Id!.Value,
             Description = "New_book"
         };
+
         var result = await bookService.SaveBookAsync(book, CancellationToken.None);
 
         result.Name.Should().Be(book.Name);
