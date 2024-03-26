@@ -1,7 +1,5 @@
 # Контур.Библиотека
 
-[![pipeline status](https://git.skbkontur.ru/testers/fiit/fiit-big-library/badges/master/pipeline.svg)](https://git.skbkontur.ru/testers/fiit/fiit-big-library/-/commits/master)
-
 ## Сервисы Контур.Библиотека
 
 Сервисы Контур.Библиотека - на основе него стедунты ФИИТа учатся писать автотесты
