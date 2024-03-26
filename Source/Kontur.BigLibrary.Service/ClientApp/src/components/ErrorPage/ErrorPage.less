@@ -1,0 +1,67 @@
+.errorPage {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.info {
+  margin: 0 auto;
+  width: 900px;
+  position: relative;
+  z-index: 100;
+}
+
+.library,
+.errorText {
+  font-weight: normal;
+}
+
+.errorText {
+  padding-bottom: 20px;
+}
+
+.errorCode {
+  color: #a0a0a0;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 400;
+  vertical-align: top;
+  padding-left: 5px;
+}
+
+.clouds {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+}
+
+.clouds__item{
+  position: fixed;
+  top: 26.7vh;
+  left: 0;
+  width: 5540px;
+  animation: slide infinite linear;
+}
+
+#far {
+  animation-duration: 160s
+}
+
+#near {
+  animation-duration: 55s;
+}
+
+#med {
+  animation-duration: 105s;
+}
+
+@keyframes slide {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0%, 0, 0);
+  }
+}

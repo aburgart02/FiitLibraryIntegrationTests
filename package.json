@@ -1,0 +1,24 @@
+{
+  "name": "fiit-big-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run open && cd Build\\Kontur.BigLibrary.Service && Kontur.BigLibrary.Service.exe",
+    "open": "start http://localhost:5000",
+    "build": "dotnet msbuild Build.xml",
+    "dev:backend": "cd .\\Source\\Kontur.BigLibrary.Service && start dotnet run --launch-profile Kontur.BigLibrary.Service",
+    "dev:frontend": "cd .\\Source\\Kontur.BigLibrary.Service\\ClientApp && npm run start",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run open\"",
+    "storybook": "cd Source\\Kontur.BigLibrary.Service\\ClientApp && npm run storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.skbkontur.ru:testers/fiit/fiit-big-library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "8.2.0"
+  }
+}

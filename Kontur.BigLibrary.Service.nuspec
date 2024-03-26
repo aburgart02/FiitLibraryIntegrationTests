@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BigLibrary</id>
+    <version>1.0.2</version>
+    <title>BigLibrary</title>
+    <licenseUrl>http://kontur.ru</licenseUrl>        
+    <projectUrl>https://git.skbkontur.ru/library/frontend</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <authors>BigLibrary</authors>
+    <owners>SKB Kontur</owners>
+    <description>BigLibrary</description>
+    <copyright>Copyright 2019</copyright>
+  </metadata>
+<files>
+  <file src="Build\Kontur.BigLibrary.Service\**\*.pdb" />  
+  <file src="Build\Kontur.BigLibrary.Service\**\*.dll" />  
+  <file src="Build\Kontur.BigLibrary.Service\**\*.exe" />  
+  <file src="Build\Kontur.BigLibrary.Service\**\*.config" />  
+  <file src="Build\Kontur.BigLibrary.Service\**\*.xml" />
+  <file src="Build\Kontur.BigLibrary.Service\**\*.json" />
+  <file src="Build\Kontur.BigLibrary.Service\ClientApp\**" target="ClientApp" />
+  <file src="Build\Kontur.BigLibrary.Service\security\**" target="security" />
+</files>
+</package>

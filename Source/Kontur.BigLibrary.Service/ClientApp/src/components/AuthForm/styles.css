@@ -1,0 +1,30 @@
+
+.password-strength-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.weak {
+    background-color: red;
+    color: white;
+}
+
+.good {
+    background-color: yellow;
+    color: black;
+}
+
+.strong {
+    background-color: green;
+    color: white;
+}
+
+.default {
+    background-color: gray;
+    color: white;
+}

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontur.BigLibrary.Service", "Kontur.BigLibrary.Service\Kontur.BigLibrary.Service.csproj", "{8F8B89AA-7225-4969-8865-EE33306BC5BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontur.BigLibrary.DataAccess", "Kontur.BigLibrary.DataAccess\Kontur.BigLibrary.DataAccess.csproj", "{CF986059-44EA-4B26-9417-E9A2511F056F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontur.BigLibrary.Tests.Integration", "Kontur.BigLibrary.Tests.Integration\Kontur.BigLibrary.Tests.Integration.csproj", "{04D54986-BADE-4A36-BDCC-9C715CD91F1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontur.BigLibrary.Tests.Unit", "Kontur.BigLibrary.Tests.Unit\Kontur.BigLibrary.Tests.Unit.csproj", "{A8AB368C-CBBF-4305-9610-D3E23CD65EED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontur.BigLibrary.Tests.Core", "Kontur.BigLibrary.Tests.Core\Kontur.BigLibrary.Tests.Core.csproj", "{E52293C1-EBA7-40DB-85F8-85BBFBFC2FAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F8B89AA-7225-4969-8865-EE33306BC5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8B89AA-7225-4969-8865-EE33306BC5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8B89AA-7225-4969-8865-EE33306BC5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8B89AA-7225-4969-8865-EE33306BC5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF986059-44EA-4B26-9417-E9A2511F056F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF986059-44EA-4B26-9417-E9A2511F056F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF986059-44EA-4B26-9417-E9A2511F056F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF986059-44EA-4B26-9417-E9A2511F056F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04D54986-BADE-4A36-BDCC-9C715CD91F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04D54986-BADE-4A36-BDCC-9C715CD91F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04D54986-BADE-4A36-BDCC-9C715CD91F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04D54986-BADE-4A36-BDCC-9C715CD91F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8AB368C-CBBF-4305-9610-D3E23CD65EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8AB368C-CBBF-4305-9610-D3E23CD65EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8AB368C-CBBF-4305-9610-D3E23CD65EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8AB368C-CBBF-4305-9610-D3E23CD65EED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E52293C1-EBA7-40DB-85F8-85BBFBFC2FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E52293C1-EBA7-40DB-85F8-85BBFBFC2FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E52293C1-EBA7-40DB-85F8-85BBFBFC2FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E52293C1-EBA7-40DB-85F8-85BBFBFC2FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6130E858-5DDC-442E-8A09-B12B54BC84E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6130E858-5DDC-442E-8A09-B12B54BC84E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6130E858-5DDC-442E-8A09-B12B54BC84E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6130E858-5DDC-442E-8A09-B12B54BC84E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1 @@
+FOR /F "tokens=*" %%G IN ('DIR /B /AD /S bin obj ^|find ^"node_modules^" /v /i') DO RMDIR /S /Q "%%G"

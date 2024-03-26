@@ -1,0 +1,16 @@
+{
+  "librarians": [
+    {
+      "id": "1",
+      "name": "Даша Сергеева",
+      "telegram": "dash_ka",
+      "email": "korobicina@skbkontur.ru"
+    },
+    {
+      "id": "2",
+      "name": "Оля Коновалова",
+      "telegram": "cat_in_cap",
+      "email": "romanova@skbkontur.ru"
+    }
+  ]
+}

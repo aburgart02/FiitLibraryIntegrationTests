@@ -1,0 +1,23 @@
+@import "../../variables.less";
+
+:local {
+    .iconButton {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+        box-sizing: border-box !important;
+
+        &:hover {
+            transition: 0.3s;
+            background: @background-color;
+        }
+
+        &>span {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

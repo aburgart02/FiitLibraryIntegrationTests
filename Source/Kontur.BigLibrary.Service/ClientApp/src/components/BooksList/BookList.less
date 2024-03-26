@@ -1,0 +1,43 @@
+@import "../../variables.less";
+
+.bookList {
+  @media (max-width: @monitor-screen-size) {
+    width: @laptop-screen-size;
+  }
+  @media (max-width: @laptop-screen-size) {
+    width: @small-screen-size;
+  }
+  width: @monitor-screen-size;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: @wrapper-width - 60px;
+  border-radius: 1px;
+  vertical-align: top;
+  transition: 10ms;
+  cursor: pointer;
+  display: inline-block;
+  padding: @padding-value;
+  margin: @padding-value/2;
+  box-sizing: content-box;
+}
+
+.tableWrapper {
+  padding: @padding-value 0;
+}
+
+.wrapper:hover {
+  background: @hover;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 1px;
+}
+
+.cover {
+  width: @cover-width;
+  border: 1px solid @cover-border-color;
+}
+
+.busy {
+  opacity: 0.4;
+}

@@ -1,0 +1,94 @@
+{
+  "library": {
+    "0": {
+      "id": "0",
+      "name": "Database Systems. The Complete Book",
+      "author": "Hector Garcia-Molina, Jeffrey D.Ullman, Jennifer Widom",
+      "description": "Database Systems: The Complete Book is ideal for Database Systems and Database Design and Application courses offered at the junior, senior and graduate levels in Computer Science departments. A basic understanding of algebraic expressions and laws, logic, basic data structure, OOP concepts, and programming environments is implied.",
+      "rating": "1",
+      "rubrics": "Базы данных и память",
+      "isBusy": false
+    },
+    "1": {
+      "id": "1",
+      "name": "Postgress",
+      "author": "кто-то",
+      "description": "Database Systems: Postgres",
+      "rating": "1",
+      "rubrics": "Базы данных и память",
+      "isBusy": true
+    },
+    "2": {
+      "id": "2",
+      "name": "Руководство к своду знаний по управлению проектами",
+      "author": "Project Management Institute",
+      "description": "Свод знаний по управлению проектам PMBOK представляет собой сумму профессиональных знаний по управлению проектами. Институт управления проектами использует этот документ в качестве основного справочного материала для своих программ по профессиональному развитию.\nЯвляется Американским национальным стандартом. В настоящее время в пользовании находятся более 2 миллионов экземпляров Руководства PMBOK.C момента выхода четвертого издания Институт управления проектами получил тысячи ценных разъяснений и рекомендаций по улучшению от мирового сообщества руководителей проектов.",
+      "rating": "3",
+      "rubrics": "Администрирование",
+      "isBusy": false
+    },
+    "3": {
+      "id": "3",
+      "name": "Transactional Information Systems",
+      "author": "Gerhard Weikum, Gottfried Vossen",
+      "description": "Transactional Information Systems is the long-awaited, comprehensive work from leading scientists in the transaction processing field. Weikum and Vossen begin with a broad look at the role of transactional technology in today's economic andscientific endeavors, then delve into critical issues faced by all practitioners, presenting today's most effective techniques for controlling concurrent access by multiple clients, recovering from system failures, and coordinating distributed transactions.\nThe authors emphasize formal models that are easily applied across fields, that promise to remain valid as current technologies evolve, and that lend themselves to generalization and extension in the development of new classes of network-centric, functionally rich applications. This book's purpose and achievement is the presentation of the foundations of transactional systems as well as the practical aspects of the field what will help you meet today's challenges.",
+      "rating": "2",
+      "rubrics": "Администрирование",
+      "isBusy": true
+    },
+    "4": {
+      "id": "4",
+      "name": "Руководство к своду знаний по управлению проектами",
+      "author": "Project Management Institute",
+      "description": "Свод знаний по управлению проектам PMBOK представляет собой сумму профессиональных знаний по управлению проектами. Институт управления проектами использует этот документ в качестве основного справочного материала для своих программ по профессиональному развитию.\nЯвляется Американским национальным стандартом. В настоящее время в пользовании находятся более 2 миллионов экземпляров Руководства PMBOK.C момента выхода четвертого издания Институт управления проектами получил тысячи ценных разъяснений и рекомендаций по улучшению от мирового сообщества руководителей проектов.",
+      "rating": "3",
+      "rubrics": "Администрирование",
+      "isBusy": false
+    },
+    "5": {
+      "id": "5",
+      "name": "Transactional Information Systems",
+      "author": "Gerhard Weikum, Gottfried Vossen",
+      "description": "Transactional Information Systems is the long-awaited, comprehensive work from leading scientists in the transaction processing field. Weikum and Vossen begin with a broad look at the role of transactional technology in today's economic andscientific endeavors, then delve into critical issues faced by all practitioners, presenting today's most effective techniques for controlling concurrent access by multiple clients, recovering from system failures, and coordinating distributed transactions.\nThe authors emphasize formal models that are easily applied across fields, that promise to remain valid as current technologies evolve, and that lend themselves to generalization and extension in the development of new classes of network-centric, functionally rich applications. This book's purpose and achievement is the presentation of the foundations of transactional systems as well as the practical aspects of the field what will help you meet today's challenges.",
+      "rating": "2",
+      "rubrics": "Администрирование",
+      "isBusy": true
+    },
+    "6": {
+      "id": "6",
+      "name": "Оптимизация игр в Unity 5",
+      "author": "Крис Дикинсон",
+      "description": "Широкое распространение фреймворков для разработки игр, таких как Unity3D, породило острую конкуренцию в игровой индустрии. Ничто так не отпугивает игроков, как сбои при выполнении игры. Задержки при вводе, медленное отображения, физические нестыковки, подергивание, замирание и неожиданное аварийное завершение превращают игру в кошмар, и разработчики игр должны сделать все, чтобы этого никогда не происходило. В этой книге автор рассматривает основные характеристики движка Unity3D и знакомит читателя со способами улучшения производительности игровых приложений.\nИз этой книги вы узнаете, как выявлять и исследовать узкие места во всех основных компонентах движка Unity3D. В каждом конкретном случае описываются способы идентификации проблем, порядок выявления их причин и ряд возможных решений.",
+      "rating": "1",
+      "rubrics": "Азы тестирования",
+      "isBusy": false
+    },
+    "7": {
+      "id": "7",
+      "name": "Тест 1",
+      "author": "кто-то",
+      "description": "Database Systems: Postgres",
+      "rating": "1",
+      "rubrics": "Азы тестирования",
+      "isBusy": true
+    },
+    "8": {
+      "id": "8",
+      "name": "Руководство к тестированию",
+      "author": "Project Management Institute",
+      "description": "Свод знаний по управлению проектам PMBOK представляет собой сумму профессиональных знаний по управлению проектами. Институт управления проектами использует этот документ в качестве основного справочного материала для своих программ по профессиональному развитию.\nЯвляется Американским национальным стандартом. В настоящее время в пользовании находятся более 2 миллионов экземпляров Руководства PMBOK.C момента выхода четвертого издания Институт управления проектами получил тысячи ценных разъяснений и рекомендаций по улучшению от мирового сообщества руководителей проектов.",
+      "rating": "3",
+      "rubrics": "Тестирование",
+      "isBusy": false
+    },
+    "9": {
+      "id": "9",
+      "name": "Transactional Information Systems",
+      "author": "Gerhard Weikum, Gottfried Vossen",
+      "description": "Transactional Information Systems is the long-awaited, comprehensive work from leading scientists in the transaction processing field. Weikum and Vossen begin with a broad look at the role of transactional technology in today's economic andscientific endeavors, then delve into critical issues faced by all practitioners, presenting today's most effective techniques for controlling concurrent access by multiple clients, recovering from system failures, and coordinating distributed transactions.\nThe authors emphasize formal models that are easily applied across fields, that promise to remain valid as current technologies evolve, and that lend themselves to generalization and extension in the development of new classes of network-centric, functionally rich applications. This book's purpose and achievement is the presentation of the foundations of transactional systems as well as the practical aspects of the field what will help you meet today's challenges.",
+      "rating": "2",
+      "rubrics": "Тестирование",
+      "isBusy": true
+    }
+  }
+}

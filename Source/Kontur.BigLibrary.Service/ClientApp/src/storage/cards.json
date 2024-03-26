@@ -1,0 +1,18 @@
+{
+  "cards": [
+    {
+      "id": "1",
+      "name": "Даша Сергеева",
+      "telegram": "dash_ka",
+      "email": "korobicina@skbkontur.ru",
+      "phone": "+7 912 628-00-79"
+    },
+    {
+      "id": "2",
+      "name": "Оля Коновалова",
+      "telegram": "cat_in_cap",
+      "email": "romanova@skbkontur.ru",
+      "phone": "+7 982 658-33-36"
+    }
+  ]
+}

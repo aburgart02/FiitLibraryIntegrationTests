@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project ToolsVersion="15.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+
+        <Configuration>Release</Configuration>
+        <BaseDir>$(MSBuildProjectDirectory)</BaseDir>
+    </PropertyGroup>
+
+    <Target Name="Default">
+        <Exec Command="dotnet publish -c $(Configuration) -o $(BaseDir)\Build\Kontur.BigLibrary.Service\  $(BaseDir)\Source\Kontur.BigLibrary.Service\Kontur.BigLibrary.Service.csproj" />             
+    </Target>
+
+</Project>
