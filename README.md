@@ -15,51 +15,23 @@
 
 Версия указана в [.nvmrc](./Source/Kontur.BigLibrary.Service/ClientApp/.nvmrc)
 
-## Настроить JWT
-
-В файле [appsettings.json](./Source/Kontur.BigLibrary.Service/appsettings.json) необходимо изменить значения на более сложные. Для локального запуска можно не менять.
-
-`DurationInHours` означает время действия токена авторизации в часах.
-
-```json
-"JwtSettings": {
-    "Issuer": "https://example.com",
-    "Audience": "myapp",
-    "Secret": "supersecretkey123",
-    "DurationInHours": "1"
-  },
-```
-
-## Настроить Google Drive интеграцию
-
-В файле [appsettings.json](./Source/Kontur.BigLibrary.Service/appsettings.json) необходимо указать `spreadsheetId`, который находится в URL документа, к которому нужно дать доступ
-
-По дефолту рассматривается весь первый лист, 1 и 4 столбцы
-
-```json
-  "GoogleDriveIntegration": {
-    "spreadsheetId": "",
-    "range": "Лист1"
-  },
-```
-
-После нужно создать проект для интеграции и получить файлик секретов, который нужно переименовать в  `secrets.json` и положить вместо [secrets.json](./Source/Kontur.BigLibrary.Service/Integration/secrets.json)
-
-Только после этого можно пытаться запускать проект.
-
 ## Запуск проекта:
-
-### Клонировать проект
-
-```shell
-git clone git@git.skbkontur.ru:testers/fiit/fiit-big-library.git
-```
 
 ### Установить пакеты
 
 ```shell
 npm ci
 ```
+Если команда падает с ошибкой, то:
+1. Если вы находитесь в сети контура, то выполните команду 
+```npm config set registry https://nexus.kontur.host/repository/kontur-npm-group```
+2. Если вы НЕ в сети Контура, то выполните команду 
+```npm config set registry https://registry.npmjs.org/
+```
+
+Далее 
+ - запустите ```npm install``` из корня проекта и из папки ClientApp
+ - повторно запустите ```npm ci```
 
 ### Сбилдить проект
 
@@ -97,14 +69,36 @@ npm run dev:backend
 npm run storybook
 ```
 
-## Устаревшая инструкция
+## Настроить JWT
 
-1. build.bat - Сборка проекта. Выполнить один раз
-1. start.bat - Запуск проекта. Откроется на адресе http://localhost:5000
+В файле [appsettings.json](./Source/Kontur.BigLibrary.Service/appsettings.json) 
 
-Скрипты выполнять из текущей директории
+`DurationInHours` означает время действия токена авторизации в часах.
 
-Сборка проекта полностью перезаписывают существующую БД
+```json
+"JwtSettings": {
+    "Issuer": "https://example.com",
+    "Audience": "myapp",
+    "Secret": "supersecretkey123",
+    "DurationInHours": "1"
+  },
+```
+
+## Настроить Google Drive интеграцию
+
+В файле [appsettings.json](./Source/Kontur.BigLibrary.Service/appsettings.json) необходимо указать `spreadsheetId`, который находится в URL документа, к которому нужно дать доступ
+
+По дефолту рассматривается весь первый лист, 1 и 4 столбцы
+
+```json
+  "GoogleDriveIntegration": {
+    "spreadsheetId": "",
+    "range": "Лист1"
+  },
+```
+
+После нужно создать проект для интеграции и получить файлик секретов, который нужно переименовать в  `secrets.json` и положить вместо [secrets.json](./Source/Kontur.BigLibrary.Service/Integration/secrets.json)
+
 
 ## Навигация:
 
