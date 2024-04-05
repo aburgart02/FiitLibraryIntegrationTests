@@ -1,9 +1,4 @@
 using System;
-using System.Data;
-using System.Data.SQLite;
-using System.Threading;
-using System.Threading.Tasks;
-using Kontur.BigLibrary.DataAccess;
 using Kontur.BigLibrary.Service.Services.BookService;
 using Kontur.BigLibrary.Service.Services.BookService.Repository;
 using Kontur.BigLibrary.Service.Services.EventService;
@@ -19,20 +14,10 @@ namespace Kontur.BigLibrary.Tests.Integration.BookServiceTests;
 public class ContainerWithMocks
 {
     public IServiceCollection _collection;
-
-    public class MockDataBase : IDbConnectionFactory
-    {
-        public async Task<IDbConnection> OpenAsync(CancellationToken cancellation)
-        {
-            return new SQLiteConnection();
-        }
-    }
     
     public ContainerWithMocks()
     {
         _collection = new ServiceCollection();
-        
-        _collection.AddSingleton<IDbConnectionFactory, MockDataBase>();
 
         _collection.AddSingleton<ISynonymMaker, SynonymMaker>();
 
