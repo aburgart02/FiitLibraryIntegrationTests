@@ -19,13 +19,13 @@ public class BookRepositoryTests
     private readonly IBookRepository bookRepository;
     private ConcurrentBag<int> bookIds = new();
 
-    [TearDown]
-    public async Task Teardown()
+    [SetUp]
+    public async Task CleanBooks()
     {
-        foreach (var id in bookIds)
+        foreach (var book in bookIds)
         {
-            await bookRepository.DeleteBookAsync(id, CancellationToken.None);
-            await bookRepository.DeleteBookIndexAsync(id, CancellationToken.None);
+            await bookRepository.DeleteBookAsync(book, CancellationToken.None);
+            await bookRepository.DeleteBookIndexAsync(book, CancellationToken.None);
         }
     }
 
@@ -68,28 +68,28 @@ public class BookRepositoryTests
     [Test]
     public async Task GetBookAsync_ReturnNull_NotExistingBook()
     {
-        var book = new BookBuilder().Build();
-        var resultBook = await bookRepository.SaveBookAsync(book, CancellationToken.None);
-        await bookRepository.SaveBookIndexAsync(book.Id!.Value, book.GetTextForFts(),
-            $"book {book.Id}", CancellationToken.None);
-        bookIds.Add(book.Id.Value);
-    
         var actualBook = await bookRepository.GetBookAsync(-1, CancellationToken.None);
-    
         actualBook.Should().BeEquivalentTo((Book)null);
     }
     
     [Test]
     public async Task SelectBooksAsync_ReturnBookByName_ExistingBook()
     {
-        var name = Guid.NewGuid().ToString();
-        var expectedBook = new BookBuilder().WithName(name).Build();
-        var book = await bookRepository.SaveBookAsync(expectedBook, CancellationToken.None);
+        var expectedBookName = Guid.NewGuid().ToString();
+        var expectedBook = new BookBuilder().WithName(expectedBookName).Build();
+        await bookRepository.SaveBookAsync(expectedBook, CancellationToken.None);
         await bookRepository.SaveBookIndexAsync(expectedBook.Id!.Value, expectedBook.GetTextForFts(),
             $"book {expectedBook.Id}", CancellationToken.None);
         bookIds.Add(expectedBook.Id.Value);
+        
+        var anotherBookName = Guid.NewGuid().ToString();
+        var anotherBook = new BookBuilder().WithName(anotherBookName).Build();
+        await bookRepository.SaveBookAsync(anotherBook, CancellationToken.None);
+        await bookRepository.SaveBookIndexAsync(anotherBook.Id!.Value, anotherBook.GetTextForFts(),
+            $"book {anotherBook.Id}", CancellationToken.None);
+        bookIds.Add(anotherBook.Id.Value);
 
-        var actualBook = await bookRepository.SelectBooksAsync(new BookFilter(){Query = name}, CancellationToken.None);
+        var actualBook = await bookRepository.SelectBooksAsync(new BookFilter(){Query = expectedBookName}, CancellationToken.None);
 
         actualBook.FirstOrDefault().Should().BeEquivalentTo(expectedBook);
     }
@@ -98,26 +98,19 @@ public class BookRepositoryTests
     public async Task SelectBooksAsync_ReturnNull_DeletedBook()
     {
         var book = new BookBuilder().Build();
-        var resultBook = await bookRepository.SaveBookAsync(book, CancellationToken.None);
-        await bookRepository.SaveBookIndexAsync(book.Id!.Value, book.GetTextForFts(),
-            $"book {book.Id}", CancellationToken.None);
-        bookIds.Add(book.Id.Value);
-        
-        await bookRepository.DeleteBookAsync((int)book.Id, CancellationToken.None);
-        await bookRepository.DeleteBookIndexAsync(book.Id!.Value, CancellationToken.None);
     
         var actualBook = await bookRepository.GetBookAsync(book.Id.Value, CancellationToken.None);
-    
         actualBook.Should().BeEquivalentTo((Book)null);
     }
-    
+
     [Test]
     public async Task SelectBooksAsync_ReturnBooksWithLimit_ExistingBooks()
     {
         var prefix = Guid.NewGuid().ToString();
         var limit = 10;
+        var total = 20;
         var expectedBooks = new List<Book>();
-        for (var i = 0; i < limit; i++)
+        for (var i = 0; i < total; i++)
         {
             var expectedBook = new BookBuilder().WithName(prefix + Guid.NewGuid()).Build();
             expectedBooks.Add(expectedBook);
@@ -132,7 +125,7 @@ public class BookRepositoryTests
                 Limit = limit
             }, CancellationToken.None);
     
-        actualBooks.Should().BeEquivalentTo(expectedBooks);
+        actualBooks.Should().BeEquivalentTo(expectedBooks.Take(limit));
     }
     
     [Test]
@@ -160,23 +153,17 @@ public class BookRepositoryTests
         await bookRepository.SaveBookIndexAsync(expectedBook.Id!.Value, expectedBook.GetTextForFts(),
             name, CancellationToken.None);
         bookIds.Add(expectedBook.Id.Value);
-        var expectedBookSummary = new BookSummary()
-        {
-            Name = expectedBook.Name, 
-            Author = expectedBook.Author,
-            Description = expectedBook.Description,
-            RubricId = expectedBook.RubricId,
-            Id = (int)expectedBook.Id,
-            Synonym = expectedBook.Name
-        };
         
         var bookSummary = await bookRepository.GetBookSummaryBySynonymAsync(name, CancellationToken.None);
-        bookSummary.Name.Should().Be(expectedBookSummary.Name);
-        bookSummary.Author.Should().Be(expectedBookSummary.Author);
-        bookSummary.Description.Should().Be(expectedBookSummary.Description);
-        bookSummary.RubricId.Should().Be(expectedBookSummary.RubricId);
-        bookSummary.Id.Should().Be(expectedBookSummary.Id);
-        bookSummary.Synonym.Should().Be(expectedBookSummary.Synonym);
+        Assert.Multiple(() =>
+        {
+            Assert.AreEqual(expectedBook.Name, bookSummary.Name);
+            Assert.AreEqual(expectedBook.Author, bookSummary.Author);
+            Assert.AreEqual(expectedBook.Description, bookSummary.Description);
+            Assert.AreEqual(expectedBook.RubricId, bookSummary.RubricId);
+            Assert.AreEqual(expectedBook.Id, bookSummary.Id);
+            Assert.AreEqual(expectedBook.Name, bookSummary.Synonym);
+        });
     }
     
     [Test]
@@ -199,42 +186,29 @@ public class BookRepositoryTests
     public async Task SelectBooksAsync_ReturnOrderedBooksWithOffset_ExistingBooks()
     {
         var prefix = Guid.NewGuid().ToString();
-        var offset = 1;
+        var offset = 5;
+        var total = 10;
         var expectedBooks = new List<Book>();
-        await Task.Run(() =>
+        for (var i = 0; i < total; i++)
         {
-            var book = new BookBuilder().WithName(prefix + Guid.NewGuid()).Build();
-            var resultBook = bookRepository.SaveBookAsync(book, CancellationToken.None);
-            bookRepository.SaveBookIndexAsync(book.Id!.Value, book.GetTextForFts(),
-                $"book {book.Id}", CancellationToken.None);
-            bookIds.Add(book.Id.Value);
-            expectedBooks.Add(book);
-        });
-        await Task.Run(() =>
-        {
-            var book = new BookBuilder().WithName(prefix + Guid.NewGuid()).Build();
-            var resultBook = bookRepository.SaveBookAsync(book, CancellationToken.None);
-            bookRepository.SaveBookIndexAsync(book.Id!.Value, book.GetTextForFts(),
-                $"book {book.Id}", CancellationToken.None);
-            bookIds.Add(book.Id.Value);
-            expectedBooks.Add(book);
-        });
-        await Task.Run(() =>
-        {
-            var book = new BookBuilder().WithName(prefix + Guid.NewGuid()).Build();
-            var resultBook = bookRepository.SaveBookAsync(book, CancellationToken.None);
-            bookRepository.SaveBookIndexAsync(book.Id!.Value, book.GetTextForFts(),
-                $"book {book.Id}", CancellationToken.None);
-            bookIds.Add(book.Id.Value);
-            expectedBooks.Add(book);
-        });
-    
+            await Task.Run(() =>
+            {
+                var book = new BookBuilder().WithName(prefix + Guid.NewGuid()).WithId(i).Build();
+                var resultBook = bookRepository.SaveBookAsync(book, CancellationToken.None);
+                bookRepository.SaveBookIndexAsync(book.Id!.Value, book.GetTextForFts(),
+                    $"book {book.Id}", CancellationToken.None);
+                bookIds.Add(book.Id.Value);
+                expectedBooks.Add(book);
+            });
+        }
+
         var actualBooks = await bookRepository.SelectBooksAsync(new BookFilter(){
             Query = prefix,
             Offset = offset,
             Order = BookOrder.ByLastAdding,
         }, CancellationToken.None);
-        
-        actualBooks.Should().BeEquivalentTo(expectedBooks.Skip(offset).Reverse());
+
+        expectedBooks.Reverse();
+        actualBooks.Should().BeEquivalentTo(expectedBooks.Skip(offset));
     }
 }
