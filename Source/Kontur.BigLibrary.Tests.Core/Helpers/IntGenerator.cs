@@ -8,4 +8,9 @@ public static class IntGenerator
     {
         return rnd.Next();
     }
+    
+    public static int GetInRange(int range)
+    {
+        return rnd.Next(range);
+    }
 }
