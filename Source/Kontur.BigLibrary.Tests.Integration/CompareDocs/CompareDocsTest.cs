@@ -75,7 +75,9 @@ public class CompareDocsTest
         var regex = new Regex(@"<Title>(.*?)<\/Title>");
         var matches = regex.Matches(xmlResult);
         
-        books.Select(x => x.Name).Should().BeEquivalentTo(matches.Select(x => x.Groups[1].Value));
+        var actualTitles = matches.Select(x => x.Groups[1].Value);
+        var expectedTitles = books.Select(x => x.Name);
+        Assert.That(actualTitles, Is.EqualTo(expectedTitles));
     }
     
     [Test]
@@ -90,54 +92,22 @@ public class CompareDocsTest
         
         var expDoc = new XDocument(
             new XElement("Books",
-                new XElement("ExportTime", exportTime.ToString("yyyy-MM-dd HH:mm:ss")),
-                new XElement("Book",
-                    new XElement("Title", books[0].Name),
-                    new XElement("Author", books[0].Author),
-                    new XElement("Description", books[0].Description),
-                    new XElement("RubricId", books[0].RubricId),
-                    new XElement("ImageId", books[0].ImageId.ToString()),
-                    new XElement("Price", books[0].Price),
-                    new XElement("IsBusy", "false")
-                ),
-                new XElement("Book",
-                    new XElement("Title", books[1].Name),
-                    new XElement("Author", books[1].Author),
-                    new XElement("Description", books[1].Description),
-                    new XElement("RubricId", books[1].RubricId),
-                    new XElement("ImageId", books[1].ImageId.ToString()),
-                    new XElement("Price", books[1].Price),
-                    new XElement("IsBusy", "false")
-                ),
-                new XElement("Book",
-                    new XElement("Title", books[2].Name),
-                    new XElement("Author", books[2].Author),
-                    new XElement("Description", books[2].Description),
-                    new XElement("RubricId", books[2].RubricId),
-                    new XElement("ImageId", books[2].ImageId.ToString()),
-                    new XElement("Price", books[2].Price),
-                    new XElement("IsBusy", "false")
-                ),
-                new XElement("Book",
-                    new XElement("Title", books[3].Name),
-                    new XElement("Author", books[3].Author),
-                    new XElement("Description", books[3].Description),
-                    new XElement("RubricId", books[3].RubricId),
-                    new XElement("ImageId", books[3].ImageId.ToString()),
-                    new XElement("Price", books[3].Price),
-                    new XElement("IsBusy", "false")
-                ),
-                new XElement("Book",
-                    new XElement("Title", books[4].Name),
-                    new XElement("Author", books[4].Author),
-                    new XElement("Description", books[4].Description),
-                    new XElement("RubricId", books[4].RubricId),
-                    new XElement("ImageId", books[4].ImageId.ToString()),
-                    new XElement("Price", books[4].Price),
-                    new XElement("IsBusy", "false")
-                )
+                new XElement("ExportTime", exportTime.ToString("yyyy-MM-dd HH:mm:ss"))
             )
         );
+        for (var i = 0; i < 5; i++)
+        {
+            expDoc.Element("Books")?.Add(
+                new XElement("Book",
+                    new XElement("Title", books[i].Name),
+                    new XElement("Author", books[i].Author),
+                    new XElement("Description", books[i].Description),
+                    new XElement("RubricId", books[i].RubricId),
+                    new XElement("ImageId", books[i].ImageId.ToString()),
+                    new XElement("Price", books[i].Price),
+                    new XElement("IsBusy", "false")
+                ));
+        }
 
         xDoc.Should().BeEquivalentTo(expDoc);
     }
